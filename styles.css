@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+button {
+    margin: 10px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 80px); /* 4列，每列120px */
+    grid-template-rows: repeat(4, 120px); /* 4行，每行80px */
+    gap: 10px; /* 卡片之間的間距 */
+}
+
+.card {
+    position: relative;
+    width: 80px; /* 長方形的寬度 */
+    height: 120px; /* 長方形的高度 */
+    perspective: 1000px; /* 透視效果 */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* 隱藏背面 */
+    border: 1px solid #ccc;
+    overflow: hidden; /* 隱藏溢出的內容 */
+    transition: transform 0.6s; /* 添加平滑的翻轉效果 */
+}
+
+.card-front img,
+.card-back img {
+    width: 100%; /* 讓圖片寬度填滿卡片 */
+    height: 100%; /* 讓圖片高度填滿卡片 */
+    object-fit: cover; /* 保持比例，裁剪多餘部分 */
+}
+
+.card-back {
+    background-color: #f1f1f1; /* 背面背景 */
+    transform: rotateY(180deg); /* 旋轉背面 */
+}
+
+.card.flipped .card-front {
+    transform: rotateY(180deg); /* 翻轉正面 */
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0); /* 顯示背面 */
+}
+label {
+    margin-right: 10px; /* 增加標籤和下拉選單之間的距離 */
+}
+
+#themeSelect {
+    margin-bottom: 20px; /* 增加下拉選單和卡牌之間的距離 */
+}
